@@ -19,6 +19,7 @@ systemctl enable containerd.service
 
 DOCKER_DAEMON_JSON="/etc/docker/daemon.json"
 NEW_DAEMON_JSON_CONTENT='{
+"iptables": false,
 "log-driver": "json-file",
 	"log-opts": {
 		"max-size": "10m",
