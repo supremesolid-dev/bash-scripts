@@ -8,7 +8,6 @@ export DEBIAN_FRONTEND=noninteractive
 
 # Gera uma senha aleatória
 MYSQL_ROOT_PASSWORD=$(tr -dc 'A-Za-z0-9' < /dev/urandom | head -c 16)
-echo "Senha gerada para o MySQL root: $MYSQL_ROOT_PASSWORD"
 
 # Configura a senha do root do MySQL
 debconf-set-selections <<< "mysql-server mysql-server/root_password password $MYSQL_ROOT_PASSWORD"
@@ -21,4 +20,6 @@ apt-get install -y mysql-server
 mysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "CREATE USER IF NOT EXISTS 'root'@'%' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD'; GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 mysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "DROP USER 'root'@'localhost'; FLUSH PRIVILEGES;"
 
-echo $MYSQL_ROOT_PASSWORD
+clear
+
+echo "Senha do MySQL: '$MYSQL_ROOT_PASSWORD'";
