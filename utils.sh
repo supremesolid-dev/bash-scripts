@@ -6,14 +6,8 @@ setenforce 0 >> /dev/null 2>&1
 
 export DEBIAN_FRONTEND=noninteractive
 
-apt install -y language-pack-gnome-pt
-apt install -y language-pack-gnome-pt-base
-apt install -y language-pack-pt
-apt install -y language-pack-pt-base
-
-dpkg-reconfigure tzdata 
-
 apt-get install -y \
+    language-pack-gnome-pt language-pack-gnome-pt-base language-pack-pt language-pack-pt-base \
     libssl-dev \
     libreadline-dev \
     zlib1g-dev \
@@ -41,3 +35,5 @@ apt-get install -y \
     tar \
     ubuntu-standard \
     dnsutils
+
+timedatectl set-timezone America/Sao_Paulo
